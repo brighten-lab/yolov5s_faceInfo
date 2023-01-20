@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>데이터</title>
+</head>
+<style>
+    body{
+        text-align : center;  
+    }
+    th, td {
+        border: 1px solid #444444;
+        padding: 10px;
+    }
+    .c{
+        display : flex;
+        justify-content : center;
+    }
+    tr:hover {background-color: #ffc5c2; cursor: pointer;}
+    table { border: 1px solid #444444; width: 70%; border-collapse: collapse;}
+
+    button {
+          background-color: #F9B514;
+          padding: 5px 10px;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+
+        .modal {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 120%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .modal .bg {
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .modalBox {
+          position: absolute;
+          background-color: #fff;
+          width: 30%;
+          height: 20%;
+          padding: 10px;
+        }
+
+        .modalBox button {
+          display: block;
+          width: 80px;
+          margin: 0 auto;
+        }
+
+        .hidden {
+          display: none;
+        }
+
+        .backBtn {
+          background-color: #ff9900;
+          padding: 5px 10px;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+</style>
+<body>
+    <input class="backBtn" type="button" value="뒤로가기" onclick = "location.href='/'" />
+    <button class="openBtn">순위</button>
+    <div class="modal hidden">
+        <div class="bg"></div>
+        <div class="modalBox">
+        <br>이날의 순위<br><br>
+        {% for i in range(data|length) %}
+            {{ (i+1)|string}}{{ "등 " +data[i].name}}
+            {{data[i].count|string}}번<br>
+        {% endfor %}
+        <br>
+          <button class="closeBtn">✖</button>
+        </div>
+      </div>
+      
+      <script>
+        const open = () => {
+          document.querySelector(".modal").classList.remove("hidden");
+        }
+      
+        const close = () => {
+          document.querySelector(".modal").classList.add("hidden");
+        }
+      
+        document.querySelector(".openBtn").addEventListener("click", open);
+        document.querySelector(".closeBtn").addEventListener("click", close);
+        document.querySelector(".bg").addEventListener("click", close);
+      </script>
+
+    <h2>인식된 데이터</h2>
+    <form method="POST">
+        <input type="date" name="date"/>
+        <input type="submit" value="조회"/>
+    </form> <br>
+    {% if rows != None %}
+    <div class="c">
+        <table>
+            <tr>
+                <td>번호</td>
+                <td>시간</td>
+                <td>이름</td>
+            </tr>
+            <tbody>
+                {% for i in rows %}
+                <tr>
+                    <td>{{ i[0] }}</td>
+                    <td>{{ i[1] }}</td>
+                    <td>{{ i[2] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+</body>
+</html>
