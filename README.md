@@ -1,9 +1,11 @@
-# yolov5를 이용한 얼굴 인식
+# [yolov5](https://github.com/heymin2/yolov5)를 이용한 얼굴 인식
 2023년 브라이튼 겨울 방학 프로젝트
 
 1. 브라이튼 경산 사무실에 있는 4명의 인물 사진을 마스크, 노마스크로 구분해 라벨링 후 [yolov5](https://github.com/heymin2/yolov5)를 이용해 학습시킴
 2. 웹에 학습시킨 데이터가 포함된 카메라를 띄운 후, 날짜별 순위, 날짜별 데이터 보여줌
 
+## train, test
+[학습](https://github.com/heymin2/yolov5_faceInfo) 코드
 
 ## Main 
 상단의 이모티콘을 누르면 데이터베이스에 기록된 화면을 볼 수 있다.
