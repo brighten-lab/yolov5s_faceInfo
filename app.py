@@ -19,7 +19,7 @@ app = Flask(__name__)
 
 # Load Custom Model
 model = torch.hub.load("ultralytics/yolov5", "custom",
-                       path="runs/train/exp5/weights/best.pt", force_reload=True)
+                       path="runs/train/exp/weights/best.pt", force_reload=True)
 
 # Set Model Settings
 model.eval()

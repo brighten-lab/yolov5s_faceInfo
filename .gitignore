@@ -1,3 +1,4 @@
 venv
-dataset
+dataset/train
+dataset/val
 __pycache__
